@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Check, ChevronLeft, ChevronRight } from 'lucide-react';
-import { fetchData } from './lib/api';
+import { fetchData, getImageUrl } from './lib/api';
+import { waLink } from './lib/constants';
 
 export default function SeaStorm12Page() {
     const [boat, setBoat] = useState<any>(null);
@@ -29,7 +30,7 @@ export default function SeaStorm12Page() {
 
     // Fallback if no images found for color, use boat main image
     const displayImages = images.length > 0 ? images : [boat.main_image];
-    const currentImage = displayImages[imageIdx] || '';
+    const currentImage = getImageUrl(displayImages[imageIdx] || '');
 
     const handleColorChange = (idx: number) => {
         setActiveColorIdx(idx);
@@ -168,13 +169,23 @@ export default function SeaStorm12Page() {
                     </div>
 
                     <div className="pt-8 flex flex-col sm:flex-row gap-4">
-                        <button className="bg-primary text-white px-10 py-5 font-bold text-[11px] tracking-[0.2em] uppercase rounded-sm hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-4 flex-1">
-                            Request Appraisal
+                        <a
+                            href={waLink(`Hi, I'd like to book an inspection for the ${boat.name}.`)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-primary text-white px-10 py-5 font-bold text-[11px] tracking-[0.2em] uppercase rounded-sm hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-4 flex-1"
+                        >
+                            Book Inspection
                             <ArrowRight className="w-4 h-4" />
-                        </button>
-                        <button className="border border-gray-200 text-primary px-10 py-5 font-bold text-[11px] tracking-[0.2em] uppercase rounded-sm hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-4">
-                            Download Brochure
-                        </button>
+                        </a>
+                        <a
+                            href={waLink(`Hi, I'd like to inquire about the ${boat.name}.`)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="border border-gray-200 text-primary px-10 py-5 font-bold text-[11px] tracking-[0.2em] uppercase rounded-sm hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-4"
+                        >
+                            Inquire via WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>

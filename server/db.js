@@ -161,7 +161,7 @@ if (homeContent.count === 0) {
             '#001e40,#94a3b8,#004f56,#48626e',
             'Regal LX Series', 'Redefining the standard for coastal day boats with unparalleled upholstery and social layouts.',
             'Craftmanship Focus', 'Every authorised resale vessel undergoes a 120-point technical inspection by our master mariners.',
-            'Ready to list your vessel?', 'Join Egypt''s most exclusive maritime network. We connect serious sellers with qualified international buyers.',
+            'Find Your Perfect Vessel.', 'Browse Egypt''s most exclusive fleet. Book an in-person inspection and see your next vessel up close.',
             'Premium Marine Brokerage', 'El Gouna | Hurghada | Cairo'
         )
     `).run();
