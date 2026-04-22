@@ -13,7 +13,6 @@ import AdminDashboard from './AdminDashboard';
 import { fetchData, getImageUrl } from './lib/api';
 import { WA_PHONE_DISPLAY, waLink } from './lib/constants';
 import {
-  Search,
   ChevronDown,
   ArrowRight,
   Globe,
@@ -72,10 +71,14 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
         </div>
 
         <div className="flex items-center space-x-4">
-          <Search className="w-5 h-5 text-primary cursor-pointer hover:opacity-70 transition-opacity" />
-          <button className="hidden md:block bg-primary text-white px-6 py-2 font-bold text-[10px] tracking-widest uppercase rounded-sm hover:scale-95 transition-transform">
+          <a
+            href={waLink("Hi, I'd like to inquire about a vessel.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:block bg-primary text-white px-6 py-2 font-bold text-[10px] tracking-widest uppercase rounded-sm hover:scale-95 transition-transform"
+          >
             Inquire
-          </button>
+          </a>
           <button className="md:hidden text-primary" onClick={() => setIsMobileMenuOpen(true)}>
             <Menu className="w-6 h-6" />
           </button>
@@ -103,9 +106,14 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
               <button onClick={() => { setCurrentPage('sell-your-boat'); setIsMobileMenuOpen(false); }} className={`text-left w-full ${currentPage === 'sell-your-boat' ? 'text-primary' : 'text-secondary'}`}>Sell Your Boat</button>
               <button onClick={() => { setCurrentPage('seastorm-models'); setIsMobileMenuOpen(false); }} className={`text-left w-full ${currentPage.startsWith('seastorm') ? 'text-primary' : 'text-secondary'}`}>Authorised Resale (SEASTORM)</button>
             </div>
-            <button className="mt-auto bg-primary text-white w-full py-4 font-bold text-xs tracking-widest uppercase rounded-sm">
+            <a
+              href={waLink("Hi, I'd like to inquire about a vessel.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto bg-primary text-white w-full py-4 font-bold text-xs tracking-widest uppercase rounded-sm text-center"
+            >
               Inquire
-            </button>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -113,7 +121,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
   );
 };
 
-const Hero = ({ content }: { content: any }) => (
+const Hero = ({ content, setCurrentPage }: { content: any; setCurrentPage: (page: string) => void }) => (
   <section className="relative h-[85vh] w-full overflow-hidden flex items-center">
     <div className="absolute inset-0 z-0">
       <img
@@ -140,10 +148,16 @@ const Hero = ({ content }: { content: any }) => (
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-wrap gap-6"
         >
-          <button className="bg-white text-primary px-10 py-4 font-bold text-[11px] tracking-widest uppercase rounded-sm hover:translate-y-[-2px] hover:shadow-xl transition-all">
+          <button
+            onClick={() => { window.scrollTo(0, 0); setCurrentPage('seastorm-models'); }}
+            className="bg-white text-primary px-10 py-4 font-bold text-[11px] tracking-widest uppercase rounded-sm hover:translate-y-[-2px] hover:shadow-xl transition-all"
+          >
             Browse Listings
           </button>
-          <button className="border border-white/40 backdrop-blur-md text-white px-10 py-4 font-bold text-[11px] tracking-widest uppercase rounded-sm hover:bg-white/10 transition-all">
+          <button
+            onClick={() => { window.scrollTo(0, 0); setCurrentPage('sell-your-boat'); }}
+            className="border border-white/40 backdrop-blur-md text-white px-10 py-4 font-bold text-[11px] tracking-widest uppercase rounded-sm hover:bg-white/10 transition-all"
+          >
             The Resale Process
           </button>
         </motion.div>
@@ -442,7 +456,7 @@ export default function App() {
       <main className="flex-grow">
         {currentPage === 'home' && (
           <>
-            {homeContent?.section_hero_enabled !== 0 && <Hero content={homeContent} />}
+            {homeContent?.section_hero_enabled !== 0 && <Hero content={homeContent} setCurrentPage={setCurrentPage} />}
             {homeContent?.section_vision_enabled !== 0 && <VisionSection content={homeContent} />}
             {homeContent?.section_featured_enabled !== 0 && <FeaturedSection content={homeContent} />}
             {homeContent?.section_cta_enabled !== 0 && <CTASection content={homeContent} />}
