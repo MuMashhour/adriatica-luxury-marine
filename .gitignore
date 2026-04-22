@@ -1,0 +1,30 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Local DB + uploads — Railway uses a persistent volume for these
+database.sqlite
+public/uploads/
+
+# Raw/unprocessed assets — too large for git, not needed for the app
+src/assets/raw_assets/
+src/assets/seastorm_raw/
+src/assets/drone1.jpg
+src/assets/drone2.jpg
+src/assets/drone3.jpg
+src/assets/drone4.jpg
+src/assets/drone5.jpg
+src/assets/hero2.JPG
+src/assets/hero_main.png
+src/assets/seastorm/
+
+# Loose raw photos at project root
+SeaStorm 12 HDPE Advantage/
+
+# Claude Code internal files
+.claude/
