@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.git/
+database.sqlite
+public/uploads/
+src/assets/raw_assets/
+src/assets/seastorm_raw/
+src/assets/drone1.jpg
+src/assets/drone2.jpg
+src/assets/drone3.jpg
+src/assets/drone4.jpg
+src/assets/drone5.jpg
+src/assets/hero2.JPG
+src/assets/hero_main.png
+src/assets/seastorm/
+SeaStorm 12 HDPE Advantage/
+.claude/
+*.log
+.env
